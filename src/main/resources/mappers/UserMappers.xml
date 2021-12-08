@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bug.dao.UserDao">
+
+    <select id="getAllU" resultType="com.example.bug.entity.User">
+        select * from bug_project
+    </select>
+    
+    <update id="updProduct">
+        update product set stock = stock-1  where pid=#{pid};
+    </update>
+    
+    <insert id="insertBuy">
+        insert into buy (bid,pid) values (#{bid},#{pid});
+    </insert>
+
+    <select id="stock" resultType="int">
+        select stock from product where pid = #{pid};
+    </select>
+
+    <select id="queryStock" resultType="java.lang.Integer">
+        select stock from product
+    </select>
+
+    <select id="queryID" resultType="java.lang.Integer">
+        select pid from product
+    </select>
+
+</mapper>

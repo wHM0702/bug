@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.bug.dao.DetailDao">
+
+    <select id="getAll" resultType="com.example.bug.entity.Detail">
+        select * from  bug_detail
+        <where>
+            <if test="pid!=null and pid!=''">
+                projectId=#{pid}
+            </if>
+
+        </where>
+        ORDER BY createDate DESC;
+    </select>
+
+    <insert id="addDetails" >
+        insert into bug_detail(projectId,severity,title,reportUser,createDate) values (#{projectId},#{severity},#{title},#{reportUser},SYSDATE())
+    </insert>
+
+</mapper>
